@@ -1,0 +1,93 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+
+
+/*test*/
+#main {
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+}
+
+p {
+  font-size: 13px;
+  text-align: center;
+}
+
+.row {
+  width: 520px;
+  margin: 0 auto;
+}
+
+.row:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.tile {
+  /* background: #d9e0d6; */
+background-color: #d9e0d6;
+border: 1px solid #464646;
+height: 20px;
+padding: 2px;
+text-align: center;
+width: 25px;
+font-weight: normal;
+font-size: 0.75em;
+font-family: Arial, Helvetica, sans-serif;
+float: left;
+cursor: crosshair;
+/* font-weight: bold; */
+  /*height: 25px;
+  width: 25px;
+  background: lightgray;
+  float: left;
+  border-style: outset;
+  border-width: 2px;
+  line-height: 20px;
+  padding-left: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;*/
+}
+
+.explored {
+  border-style: inset;
+}
+
+.selected, .bombed {
+  background-color: rgb(122, 186, 101);
+}
