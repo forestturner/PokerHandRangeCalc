@@ -1,31 +1,43 @@
 import {connect} from 'react-redux';
 import GridShow from './grid_show';
-import { updateOpponentGrid }  from '../../actions/grid_actions.js'
+import { updateOpponentGrid,updateHeroGrid,updateTableGrid,updateNumberPossibleHands,updateSlider }  from '../../actions/grid_actions.js'
 import { merge } from 'lodash';
 // import {requestFuton} from '../../actions/futon_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
-  const opponentGrid = merge({}, state.Opponent_possible_hand.opponentGrid);
-  // const heroGrid = state.heroGrid;
-  // const tableGrid = state.tableGrid;
-  // const currentUserFutonId = state.session.currentUser.futon.id
-  // const futonId = parseInt(ownProps.params.futonId);
-  // const futon = state.futons[futonId] || {};
+  const opponentGrid = merge({}, state.grids.opponentGrid);
+  const heroGrid = merge({}, state.grids.heroGrid);
+  const tableGrid = merge({}, state.grids.tableGrid);
+  const numberOfHands = merge({},{
+    numberOfHands: state.grids.possibleNumberHands,
+    numberOfQuads:state.grids.numberOfQuads,
+    numberOfFullHouses: state.grids.numberOfFullHouses,
+    numberOfFlushes: state.grids.numberOfFlushes,
+    numberOfStraights: state.grids.numberOfStraights,
+    numberOfThreeOFAKinds: state.grids.numberOfThreeOFAKinds,
+    numberOfJustPair: state.grids.numberOfJustPair,
+    numberOfTwoPairs: state.grids.numberOfTwoPairs,
+    numberOfOverPair: state.grids.numberOfOverPair,
+    numberOfTopPair: state.grids.numberOfTopPair,
+    numberOfPPBelowTp: state.grids.numberOfPPBelowTp,
+    numberOfAceHigh: state.grids.numberOfAceHigh,
+    numberOfNothing: state.grids.numberOfNothing,
+    numberOfPossibleFlushDraw: state.grids.numberOfPossibleFlushDraw
+  });
   return {
     opponentGrid,
-    // heroGrid,
-    // tableGrid
-    // futonId,
-    // currentUserFutonId,
-    // futon
+    heroGrid,
+    tableGrid,
+    numberOfHands
   };
 };
 
 const mapdispatchToProps = dispatch => ({
-   updateOpponentGrid: (grid) => dispatch(updateOpponentGrid(grid)),
-  // updateHeroGrid: (x,y) => dispatch(updateHeroGrid(x, y)),
-  // updatetableGrid: (x,y) => dispatch(updatetableGrid(x, y))
+  updateOpponentGrid: (grid) => dispatch(updateOpponentGrid(grid)),
+  updateHeroGrid: (grid) => dispatch(updateHeroGrid(grid)),
+  updateTableGrid: (grid) => dispatch(updateTableGrid(grid)),
+  updateNumberPossibleHands: () => dispatch(updateNumberPossibleHands() ),
+  updateSlider: (value) => dispatch(updateSlider(value))
 });
 
 export default connect(

@@ -1,7 +1,7 @@
 import Tile from './tile';
 import React from 'react';
 
-class OpponentGrid extends React.Component{
+class HeroGrid extends React.Component{
   constructor(props){
     super(props);
     this.renderRows = this.renderRows.bind(this);
@@ -9,21 +9,21 @@ class OpponentGrid extends React.Component{
   }
 
   render() {
-    const opponentGrid = this.props.opponentGrid;
+    const heroGrid = this.props.heroGrid;
     const that = this;
     return(
       <div className="block">
-        <h3>Opponent's possible range</h3>
+        <h3>Dead cards *my hand*</h3>
         {this.renderRows()}
       </div>
     );
   }
 
   renderRows() {
-    const opponentGrid = this.props.opponentGrid;
-    return opponentGrid.grid.map( (row, i) => {
+    const heroGrid = this.props.heroGrid;
+    return heroGrid.grid.map( (row, i) => {
       return (
-        <div className="row" key={`row-${i}`}>
+        <div className="rowH" key={`row-${i}`}>
           {this.renderTiles(row, i)}
         </div>
       );
@@ -31,18 +31,18 @@ class OpponentGrid extends React.Component{
   }
 
   renderTiles(row, i){
-    const opponentGrid = this.props.opponentGrid;
+    const heroGrid = this.props.heroGrid;
     return row.map( (tile, j) => {
       return (
         <Tile
           tile={tile}
-          opponentGrid={opponentGrid}
-          updateOGrid={this.props.updateOGrid}
-          key={i * opponentGrid.gridSize + j} />
+          heroGrid={heroGrid}
+          updateHGrid={this.props.updateHGrid}
+          key={i * 4 + j} />
       );
     });
   }
 
 }
 
-export default OpponentGrid;
+export default HeroGrid;

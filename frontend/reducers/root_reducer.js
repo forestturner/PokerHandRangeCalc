@@ -10,7 +10,7 @@ import PokerGridReducer from './poker_grid_reducer';
 // import CoordsReducer from './coords_reducer';
 
 export default combineReducers({
-  Opponent_possible_hand: PokerGridReducer
+  grids: PokerGridReducer
   // futons: FutonsReducer,
   // session: SessionReducer,
   // users: UsersReducer,
