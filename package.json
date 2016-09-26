@@ -30,6 +30,7 @@
     "react-rangeslider": "^1.0.9",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
+    "recharts": "^0.15.1",
     "redux": "^3.6.0",
     "redux-logger": "^2.6.1",
     "webpack": "^1.13.2"

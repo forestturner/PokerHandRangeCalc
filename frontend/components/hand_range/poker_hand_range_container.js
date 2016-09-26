@@ -22,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
     numberOfPPBelowTp: state.grids.numberOfPPBelowTp,
     numberOfAceHigh: state.grids.numberOfAceHigh,
     numberOfNothing: state.grids.numberOfNothing,
-    numberOfPossibleFlushDraw: state.grids.numberOfPossibleFlushDraw
+    numberOfPossibleFlushDraw: state.grids.numberOfPossibleFlushDraw,
+    deadCardsTable: state.grids.deadCardsTable
   });
   return {
     opponentGrid,

@@ -6,7 +6,7 @@ let defaultState = {
   opponentGrid: createOpponentGrid(),
   heroGrid: createHeroGrid(),
   tableGrid: createTableGrid(),
-  possibleNumberHands: 0,
+  possibleNumberHands: 1,
   numberOfQuads: 0,
   numberOfFullHouses: 0,
   numberOfFlushes: 0,
@@ -20,7 +20,8 @@ let defaultState = {
   numberOfAceHigh: 0,
   numberOfNothing: 0,
   numberOfPossibleFlushDraw: 0,
-  numberOfOESD: 0
+  numberOfOESD: 0,
+  deadCardsTable: []
   }
 
 function createOpponentGrid(){
@@ -56,23 +57,23 @@ const PokerGridReducer = (state = defaultState,action) => {
     return newState;
     case GridConstants.UPDATE_NUMBER_POSSIBLE_HANDS:
       let deadCardsHero = state.heroGrid.selectedcards();
-      let deadCardsTable = state.tableGrid.selectedcards();
-      let deadCards = deadCardsHero.concat(deadCardsTable);
+      let newDeadCardsTable = state.tableGrid.selectedcards();
+      let deadCards = deadCardsHero.concat(newDeadCardsTable);
 
       let newPossibleNumberHands = state.opponentGrid.createPossibleHandsFromSelectedHands(deadCards);
-      let newNumberOfQuads = state.opponentGrid.givenFlopQuads(deadCardsTable);
-      let newNumberOfFullHouses = state.opponentGrid.givenFlopFullHouse(deadCardsTable);
-      let newNumberOfFlushes = state.opponentGrid.givenFlopFlush(deadCardsTable)
-      let newNumberOfStraights = state.opponentGrid.givenFlopStraight(deadCardsTable);
-      let newNumberOfThreeOFAKinds = state.opponentGrid.givenFlopThreeOfKind(deadCardsTable);
-      let newNumberOfJustPair = state.opponentGrid.givenFlopJustPair(deadCardsTable);
-      let newNumberOfTwoPairs = state.opponentGrid.givenFlopTwoPair(deadCardsTable);
-      let newNumberOfOverPair = state.opponentGrid.givenFlopOverPair(deadCardsTable);
-      let newNumberOfTopPair = state.opponentGrid.givenFlopTopPair(deadCardsTable);
-      let newNumberOfPPBelowTp = state.opponentGrid.givenFlopPPBelowPair(deadCardsTable);
-      let newNumberOfAceHigh = state.opponentGrid.givenFlopAceHigh(deadCardsTable);
-      let newNumberOfNothing = state.opponentGrid.givenFlopNothing(deadCardsTable);
-      let newNumberOfPossibleFlushDraw = state.opponentGrid.givenFlopPossibleFlushDraw(deadCardsTable);
+      let newNumberOfQuads = state.opponentGrid.givenFlopQuads(newDeadCardsTable);
+      let newNumberOfFullHouses = state.opponentGrid.givenFlopFullHouse(newDeadCardsTable);
+      let newNumberOfFlushes = state.opponentGrid.givenFlopFlush(newDeadCardsTable)
+      let newNumberOfStraights = state.opponentGrid.givenFlopStraight(newDeadCardsTable);
+      let newNumberOfThreeOFAKinds = state.opponentGrid.givenFlopThreeOfKind(newDeadCardsTable);
+      let newNumberOfJustPair = state.opponentGrid.givenFlopJustPair(newDeadCardsTable);
+      let newNumberOfTwoPairs = state.opponentGrid.givenFlopTwoPair(newDeadCardsTable);
+      let newNumberOfOverPair = state.opponentGrid.givenFlopOverPair(newDeadCardsTable);
+      let newNumberOfTopPair = state.opponentGrid.givenFlopTopPair(newDeadCardsTable);
+      let newNumberOfPPBelowTp = state.opponentGrid.givenFlopPPBelowPair(newDeadCardsTable);
+      let newNumberOfAceHigh = state.opponentGrid.givenFlopAceHigh(newDeadCardsTable);
+      let newNumberOfNothing = state.opponentGrid.givenFlopNothing(newDeadCardsTable);
+      let newNumberOfPossibleFlushDraw = state.opponentGrid.givenFlopPossibleFlushDraw(newDeadCardsTable);
       newState = merge({},state,{
         possibleNumberHands: newPossibleNumberHands,
         numberOfQuads: newNumberOfQuads,
@@ -87,7 +88,8 @@ const PokerGridReducer = (state = defaultState,action) => {
         numberOfPPBelowTp: newNumberOfPPBelowTp,
         numberOfAceHigh: newNumberOfAceHigh,
         numberOfNothing: newNumberOfNothing,
-        numberOfPossibleFlushDraw: newNumberOfPossibleFlushDraw
+        numberOfPossibleFlushDraw: newNumberOfPossibleFlushDraw,
+        deadCardsTable: newDeadCardsTable
       });
     return newState;
     // case GridConstants.UPDATE_SLIDER:

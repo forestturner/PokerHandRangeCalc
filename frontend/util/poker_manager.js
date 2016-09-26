@@ -293,7 +293,6 @@ export class Board {
     return results;
   }
   givenFlopJustPair(flop){
-    debugger;
     let results = 0;
     for(let i =0; i< this.listOfHands.length; i++){
       let currentHandPlusFlop = this.listOfHands[i].concat(flop);
@@ -325,6 +324,7 @@ export class Board {
         }
         if(handMap[test[r][0]] === 2){
           results = results + 1;
+          break;
         }
       }
     }
