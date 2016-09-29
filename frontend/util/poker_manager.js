@@ -776,7 +776,7 @@ export class HeroBoard {
         } else {
           color = "black";
         }
-        const tile = new Tile(this, [i, j], this.cards[count], color);
+        const tile = new Tile(this, [i, j], this.cards[count],0, color);
         this.grid[i].push(tile);
         count++;
       }

@@ -133,16 +133,16 @@ class GridShow extends React.Component{
         <HeroGrid heroGrid={this.state.heroGrid} updateHGrid={this.updateHGrid}/>
         <div>
           <ul className="stats">
-          <li className="stats-li"> Quads { (Math.round((this.state.numberOfQuads / this.state.numberOfPossibleHands)*10000) /10000) } </li>
-          <li className="stats-li"> Full House {  (Math.round((this.state.numberOfFullHouses  / this.state.numberOfPossibleHands)*10000) /10000) }</li>
-          <li className="stats-li"> Flushes {  (Math.round((this.state.numberOfFlushes  / this.state.numberOfPossibleHands)*10000) /10000) }</li>
-          <li className="stats-li"> Straights { (Math.round((this.state.numberOfStraights  / this.state.numberOfPossibleHands)*10000) /10000) }</li>
-          <li className="stats-li"> Three of a kind { (Math.round((this.state.numberOfThreeOFAKinds  / this.state.numberOfPossibleHands)*10000) /10000 )}</li>
-          <li className="stats-li"> Two pair { (Math.round((this.state.numberOfTwoPairs  / this.state.numberOfPossibleHands)*10000) /10000) }</li>
-          <li className="stats-li"> A pair { (Math.round((this.state.numberOfJustPair  / this.state.numberOfPossibleHands)*10000) /10000 )}</li>
-          <li className="stats-li"> Ace high { (Math.round((this.state.numberOfAceHigh  / this.state.numberOfPossibleHands)*10000) /10000) }</li>
-          <li className="stats-li"> Nothing { (Math.round((this.state.numberOfNothing  / this.state.numberOfPossibleHands)*10000) /10000) }</li>
-          <li className="stats-li"> Possbile flush draw { (Math.round((this.state.numberOfPossibleFlushDraw  / this.state.numberOfPossibleHands)*10000) /10000) }</li>
+          <li className="stats-li"> Quads { Math.round((Math.round((this.state.numberOfQuads / this.state.numberOfPossibleHands)*10000) /10000)*100) }%</li>
+          <li className="stats-li"> Full House {  Math.round((Math.round((this.state.numberOfFullHouses  / this.state.numberOfPossibleHands)*10000) /10000)*100) }%</li>
+          <li className="stats-li"> Flushes {  Math.round((Math.round((this.state.numberOfFlushes  / this.state.numberOfPossibleHands)*10000) /10000)*100) }%</li>
+          <li className="stats-li"> Straights { Math.round((Math.round((this.state.numberOfStraights  / this.state.numberOfPossibleHands)*10000) /10000)*100) }%</li>
+          <li className="stats-li"> Three of a kind {Math.round(( Math.round((this.state.numberOfThreeOFAKinds  / this.state.numberOfPossibleHands)*10000) /10000 )*100) }%</li>
+          <li className="stats-li"> Two pair { Math.round((Math.round((this.state.numberOfTwoPairs  / this.state.numberOfPossibleHands)*10000) /10000)*100) }%</li>
+          <li className="stats-li"> A pair { Math.round((Math.round((this.state.numberOfJustPair  / this.state.numberOfPossibleHands)*10000) /10000 )*100) }%</li>
+          <li className="stats-li"> Ace high { Math.round((Math.round((this.state.numberOfAceHigh  / this.state.numberOfPossibleHands)*10000) /10000)*100) }%</li>
+          <li className="stats-li"> Nothing { Math.round((Math.round((this.state.numberOfNothing  / this.state.numberOfPossibleHands)*10000) /10000)*100) }%</li>
+          <li className="stats-li"> Possbile flush draw { Math.round((Math.round((this.state.numberOfPossibleFlushDraw  / this.state.numberOfPossibleHands)*10000) /10000)*100) }%</li>
           </ul>
         </div>
       </div>
