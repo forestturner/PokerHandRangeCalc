@@ -129,6 +129,17 @@ cursor: crosshair;
   color:black;
 }
 
+/*.progress {
+  height:15px;
+  margin:10px;
+  padding:5px;
+}*/
+.progress-bar {
+  height:15px;
+  margin:10px;
+  padding:5px;
+  /*background-color: #4CAF50;*/
+}
 .explored {
   border-style: inset;
 }
@@ -157,6 +168,10 @@ cursor: crosshair;
     border-radius: 40px;
     top: -10px;
   }
+}
+.reset {
+  margin: 10px;
+  margin-left: 35px;
 }
 
 /*graph*/

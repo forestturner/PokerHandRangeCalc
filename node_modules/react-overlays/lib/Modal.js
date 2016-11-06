@@ -121,6 +121,16 @@ var Modal = _react2.default.createClass({
     backdrop: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool, _react2.default.PropTypes.oneOf(['static'])]),
 
     /**
+     * A function that returns a backdrop component. Useful for custom
+     * backdrop rendering.
+     *
+     * ```js
+     *  renderBackdrop={props => <MyBackdrop {...props} />}
+     * ```
+     */
+    renderBackdrop: _react2.default.PropTypes.func,
+
+    /**
      * A callback fired when the escape key, if specified in `keyboard`, is pressed.
      */
     onEscapeKeyUp: _react2.default.PropTypes.func,
@@ -218,8 +228,13 @@ var Modal = _react2.default.createClass({
     /**
      * Callback fired after the Modal finishes transitioning out
      */
-    onExited: _react2.default.PropTypes.func
+    onExited: _react2.default.PropTypes.func,
 
+    /**
+     * A ModalManager instance used to track and manage the state of open
+     * Modals. Useful when customizing how modals interact within a container
+     */
+    manager: _react2.default.PropTypes.object.isRequired
   }),
 
   getDefaultProps: function getDefaultProps() {
@@ -231,7 +246,11 @@ var Modal = _react2.default.createClass({
       keyboard: true,
       autoFocus: true,
       enforceFocus: true,
-      onHide: noop
+      onHide: noop,
+      manager: modalManager,
+      renderBackdrop: function renderBackdrop(props) {
+        return _react2.default.createElement('div', props);
+      }
     };
   },
   getInitialState: function getInitialState() {
@@ -312,12 +331,22 @@ var Modal = _react2.default.createClass({
     );
   },
   renderBackdrop: function renderBackdrop() {
+    var _this = this;
+
     var _props2 = this.props;
+    var backdropStyle = _props2.backdropStyle;
+    var backdropClassName = _props2.backdropClassName;
+    var renderBackdrop = _props2.renderBackdrop;
     var Transition = _props2.transition;
     var backdropTransitionTimeout = _props2.backdropTransitionTimeout;
 
 
-    var backdrop = _react2.default.createElement('div', { ref: 'backdrop',
+    var backdropRef = function backdropRef(ref) {
+      return _this.backdrop = ref;
+    };
+
+    var backdrop = _react2.default.createElement('div', {
+      ref: backdropRef,
       style: this.props.backdropStyle,
       className: this.props.backdropClassName,
       onClick: this.handleBackdropClick
@@ -330,7 +359,12 @@ var Modal = _react2.default.createClass({
           'in': this.props.show,
           timeout: backdropTransitionTimeout
         },
-        backdrop
+        renderBackdrop({
+          ref: backdropRef,
+          style: backdropStyle,
+          className: backdropClassName,
+          onClick: this.handleBackdropClick
+        })
       );
     }
 
@@ -379,7 +413,7 @@ var Modal = _react2.default.createClass({
     var doc = (0, _ownerDocument2.default)(this);
     var container = (0, _getContainer2.default)(this.props.container, doc.body);
 
-    modalManager.add(this, container, this.props.containerClassName);
+    this.props.manager.add(this, container, this.props.containerClassName);
 
     this._onDocumentKeyupListener = (0, _addEventListener2.default)(doc, 'keyup', this.handleDocumentKeyUp);
 
@@ -392,7 +426,7 @@ var Modal = _react2.default.createClass({
     }
   },
   onHide: function onHide() {
-    modalManager.remove(this);
+    this.props.manager.remove(this);
 
     this._onDocumentKeyupListener.remove();
 
@@ -486,11 +520,11 @@ var Modal = _react2.default.createClass({
     return node && node.lastChild;
   },
   isTopModal: function isTopModal() {
-    return modalManager.isTopModal(this);
+    return this.props.manager.isTopModal(this);
   }
 });
 
-Modal.manager = modalManager;
+Modal.Manager = _ModalManager2.default;
 
 exports.default = Modal;
 module.exports = exports['default'];

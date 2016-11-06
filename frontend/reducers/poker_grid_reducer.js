@@ -48,6 +48,7 @@ const PokerGridReducer = (state = defaultState,action) => {
       newState = merge({},state,{opponentGrid: newGrid});
       return newState;
     case GridConstants.UPDATE_HERO_GRID:
+
       let newHeroGrid = action.herogrid;
       newState = merge({},state,{heroGrid: newHeroGrid});
     return newState;

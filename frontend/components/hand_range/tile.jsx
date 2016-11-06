@@ -12,6 +12,7 @@ class Tile extends React.Component{
 
     // this.props.updateGame(this.props.tile, selected);
     this.props.tile.toggleSelected();
+
     if(this.props.updateOGrid !== undefined){
       this.props.updateOGrid(this.props.opponentGrid);
     } else if (this.props.updateHGrid !== undefined) {

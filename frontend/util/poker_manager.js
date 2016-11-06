@@ -38,6 +38,9 @@ export class Tile {
       return false;
     }
   }
+  resetSelected(){
+    this.selected = false;
+  }
   // removedCards(cardsToRemove) {
   //   for(let i = 0;i<this.cards.length; i++){
   //     for(let cardIndex = 0; i<cardsToRemove.length; i++){
@@ -751,8 +754,10 @@ export class HeroBoard {
       "2s","2h","2d","2c"
     ]
     this.generateBoard();
+    this.clearBoard = this.clearBoard.bind(this);
   }
   selectedcards(){
+
     let cardArray = [];
     for (let i = 0; i < 13; i++) {
       for (let j = 0; j < 4; j++) {
@@ -779,6 +784,13 @@ export class HeroBoard {
         const tile = new Tile(this, [i, j], this.cards[count],0, color);
         this.grid[i].push(tile);
         count++;
+      }
+    }
+  }
+  clearBoard() {
+    for (let i = 0; i < 13; i++) {
+      for (let j = 0; j < 4; j++) {
+        this.grid[i][j].resetSelected();
       }
     }
   }
@@ -806,8 +818,10 @@ export class TableBoard {
       "2h","2s","2d","2c"
     ]
     this.generateBoard();
+    this.clearBoard = this.clearBoard.bind(this);
   }
   selectedcards(){
+
     let cardArray = [];
     for (let i = 0; i < 13; i++) {
       for (let j = 0; j < 4; j++) {
@@ -836,6 +850,13 @@ export class TableBoard {
         const tile = new Tile(this, [i, j], this.cards[count],0, color);
         this.grid[i].push(tile);
         count++;
+      }
+    }
+  }
+  clearBoard() {
+    for (let i = 0; i < 13; i++) {
+      for (let j = 0; j < 4; j++) {
+        this.grid[i][j].resetSelected();
       }
     }
   }

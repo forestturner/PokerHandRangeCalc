@@ -78,11 +78,10 @@ var Overlay = function (_React$Component) {
   }
 
   Overlay.prototype.render = function render() {
-    var _props = this.props;
-    var animation = _props.animation;
-    var children = _props.children;
-
-    var props = _objectWithoutProperties(_props, ['animation', 'children']);
+    var _props = this.props,
+        animation = _props.animation,
+        children = _props.children,
+        props = _objectWithoutProperties(_props, ['animation', 'children']);
 
     var transition = animation === true ? Fade : animation || null;
 

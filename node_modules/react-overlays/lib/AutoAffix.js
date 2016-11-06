@@ -68,7 +68,7 @@ var AutoAffix = function (_React$Component) {
   function AutoAffix(props, context) {
     _classCallCheck(this, AutoAffix);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AutoAffix).call(this, props, context));
+    var _this = _possibleConstructorReturn(this, (AutoAffix.__proto__ || Object.getPrototypeOf(AutoAffix)).call(this, props, context));
 
     _this.state = {
       offsetTop: null,

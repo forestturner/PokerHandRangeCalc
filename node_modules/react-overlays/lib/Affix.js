@@ -74,7 +74,7 @@ var Affix = function (_React$Component) {
   function Affix(props, context) {
     _classCallCheck(this, Affix);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Affix).call(this, props, context));
+    var _this = _possibleConstructorReturn(this, (Affix.__proto__ || Object.getPrototypeOf(Affix)).call(this, props, context));
 
     _this.state = {
       affixed: 'top',

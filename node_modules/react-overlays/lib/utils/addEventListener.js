@@ -4,11 +4,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-exports.default = function (node, event, handler) {
-  (0, _on2.default)(node, event, handler);
+exports.default = function (node, event, handler, capture) {
+  (0, _on2.default)(node, event, handler, capture);
+
   return {
     remove: function remove() {
-      (0, _off2.default)(node, event, handler);
+      (0, _off2.default)(node, event, handler, capture);
     }
   };
 };
