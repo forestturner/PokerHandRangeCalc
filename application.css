@@ -41,6 +41,8 @@ li a:hover:not(.active) {
   display: flex;
 }
 .slider{
+  position: absolute;
+  top:400px;
   margin-top: 30px;
   width:300px;
 }
