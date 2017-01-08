@@ -190,7 +190,6 @@ class GridShow extends React.Component{
         <OpponentGrid opponentGrid={this.state.opponentGrid} updateOGrid={this.updateOGrid} />
         <TableGrid tableGrid={this.state.tableGrid} updateTGrid={this.updateTGrid} />
         <HeroGrid heroGrid={this.state.heroGrid} updateHGrid={this.updateHGrid}/>
-        <div>
           <ul className="stats">
             <li className="stats-li"> Opponent's chances at these possible hands. </li>
             <li className="stats-li"> </li>
@@ -203,9 +202,8 @@ class GridShow extends React.Component{
             <li className="stats-li"> A pair { Math.round((Math.round((this.state.numberOfJustPair  / this.state.numberOfPossibleHands)*10000) /10000 )*100) }% <ProgressBar active= {A_pair_active} now={ Math.round((Math.round((this.state.numberOfJustPair   / this.state.numberOfPossibleHands)*10000) /10000 )*100) } />      </li>
             <li className="stats-li"> Ace high { Math.round((Math.round((this.state.numberOfAceHigh  / this.state.numberOfPossibleHands)*10000) /10000)*100) }% <ProgressBar active={Ace_high_active} now={ Math.round((Math.round((this.state.numberOfAceHigh  / this.state.numberOfPossibleHands)*10000) /10000 )*100) } />   </li>
             <li className="stats-li"> Nothing { Math.round((Math.round((this.state.numberOfNothing  / this.state.numberOfPossibleHands)*10000) /10000)*100) }% <ProgressBar active={Nothing_active} now={ Math.round((Math.round((this.state.numberOfNothing / this.state.numberOfPossibleHands)*10000) /10000 )*100) } />  </li>
-            <li className="stats-li"> Possbile flush draw { Math.round((Math.round((this.state.numberOfPossibleFlushDraw  / this.state.numberOfPossibleHands)*10000) /10000)*100) }% <ProgressBar active={Flushes_active} now={ Math.round((Math.round((this.state.numberOfPossibleFlushDraw  / this.state.numberOfPossibleHands)*10000) /10000 )*100) } />  </li>
+            <li className="stats-li"> Possbile flush draw { Math.round((Math.round((this.state.numberOfPossibleFlushDraw  / this.state.numberOfPossibleHands)*10000) /10000)*100) }% <ProgressBar active={Possbile_flush_draw_active} now={ Math.round((Math.round((this.state.numberOfPossibleFlushDraw  / this.state.numberOfPossibleHands)*10000) /10000 )*100) } />  </li>
           </ul>
-        </div>
         <div className="slider">
         <Horizontal opponentGrid={this.state.opponentGrid} updateOGrid ={this.updateOGrid} />
         </div>

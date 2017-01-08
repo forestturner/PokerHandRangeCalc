@@ -22,7 +22,7 @@ class HeroGrid extends React.Component{
     const that = this;
 
     return(
-      <div>
+
       <div className="block">
         <h3>Dead cards</h3>
         {this.renderRows()}
@@ -30,7 +30,7 @@ class HeroGrid extends React.Component{
         reset
         </button>
       </div>
-      </div>
+    
     );
   }
 
