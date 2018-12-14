@@ -23,7 +23,7 @@ class TableGrid extends React.Component{
     const that = this;
     return(
       <div className="block">
-      <h3>flopped cards</h3>
+      <h3>Flopped cards</h3>
         {this.renderRows()}
         <button className="reset" onClick={this.handleClearBoard}>
         reset

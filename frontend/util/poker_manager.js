@@ -1,25 +1,4 @@
-// export default class PokerManger {
-//   constructor(grid, handleClick) {
-//     this.grid = grid;
-//     this.handleClick = handleClick;
-//   }
-// }
-//
-// updateGrid(blocks){
-//   this.blocks = blocks;
-//   this._blocksToAdd().
-// }
-//
-// _createMarkerOnGrid(grid) {
-//   const pos = new google.maps.LatLng(futon.lat, futon.lng);
-//   const marker = new google.maps.Marker({
-//     position: pos,
-//     map: this.map,
-//     futonId: futon.id
-//   });
-//   marker.addListener('click', () => this.handleClick(futon));
-//   this.markers.push(marker);
-// }
+
 export class Tile {
   constructor(board, pos, string,percentage, color="", cardsToRemove = []) {
       this.string = string;
@@ -28,9 +7,8 @@ export class Tile {
       this.selected = false;
       this.color = color;
       this.percentage = percentage;
-
-      // this.removedCards(cardsToRemove);
   }
+  
   isSelected(){
     if(this.selected){
       return true;
@@ -38,20 +16,11 @@ export class Tile {
       return false;
     }
   }
+
   resetSelected(){
     this.selected = false;
   }
-  // removedCards(cardsToRemove) {
-  //   for(let i = 0;i<this.cards.length; i++){
-  //     for(let cardIndex = 0; i<cardsToRemove.length; i++){
-  //       let newArray;
-  //       if(cardsToRemove[cardIndex] === this.cards[cardIndex]){
-  //         newArray = this.cards.slice(0,cardIndex - 1);
-  //         newArray.
-  //       }
-  //     }
-  //   }
-  // }
+
   toggleSelected() {
   if (!this.selected) {
     this.selected = true;

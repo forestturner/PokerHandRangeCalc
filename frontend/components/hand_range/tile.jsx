@@ -7,10 +7,6 @@ class Tile extends React.Component{
   }
 
   handleClick(e) {
-    // const flagged = e.altKey ? true : false;
-    // const flagged = e.altKey ? true : false;
-
-    // this.props.updateGame(this.props.tile, selected);
     this.props.tile.toggleSelected();
 
     if(this.props.updateOGrid !== undefined){

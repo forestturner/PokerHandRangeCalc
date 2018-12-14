@@ -2,7 +2,6 @@ import {connect} from 'react-redux';
 import GridShow from './grid_show';
 import { updateOpponentGrid,updateHeroGrid,updateTableGrid,updateNumberPossibleHands,updateSlider }  from '../../actions/grid_actions.js'
 import { merge } from 'lodash';
-// import {requestFuton} from '../../actions/futon_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const opponentGrid = merge({}, state.grids.opponentGrid);

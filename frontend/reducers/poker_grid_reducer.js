@@ -93,10 +93,6 @@ const PokerGridReducer = (state = defaultState,action) => {
         deadCardsTable: newDeadCardsTable
       });
     return newState;
-    // case GridConstants.UPDATE_SLIDER:
-    //   let newSliderGridValue = action.sliderValue;
-    //   let newHandsFromSlider = state.opponentGrid.sliderChange(newSliderGridValue);
-    //   newState = merge({},state,{opponentGrid: newHandsFromSlider })
   default:
     return state;
   }

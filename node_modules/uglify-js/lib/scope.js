@@ -88,7 +88,7 @@ SymbolDef.prototype = {
 
 AST_Toplevel.DEFMETHOD("figure_out_scope", function(options){
     options = defaults(options, {
-        screw_ie8: false,
+        screw_ie8: true,
         cache: null
     });
 
@@ -197,12 +197,16 @@ AST_Toplevel.DEFMETHOD("figure_out_scope", function(options){
         }
         if (node instanceof AST_SymbolRef) {
             var name = node.name;
-            if (name == "eval" && tw.parent() instanceof AST_Call) {
+            var parent = tw.parent();
+            if (name == "eval" && parent instanceof AST_Call) {
                 for (var s = node.scope; s && !s.uses_eval; s = s.parent_scope) {
                     s.uses_eval = true;
                 }
             }
             var sym = node.scope.find_variable(name);
+            if (node.scope instanceof AST_Lambda && name == "arguments") {
+                node.scope.uses_arguments = true;
+            }
             if (!sym) {
                 var g;
                 if (globals.has(name)) {
@@ -213,12 +217,12 @@ AST_Toplevel.DEFMETHOD("figure_out_scope", function(options){
                     g.global = true;
                     globals.set(name, g);
                 }
-                node.thedef = g;
-                if (func && name == "arguments") {
-                    func.uses_arguments = true;
-                }
-            } else {
-                node.thedef = sym;
+                sym = g;
+            }
+            node.thedef = sym;
+            if (parent instanceof AST_Unary && (parent.operator === '++' || parent.operator === '--')
+             || parent instanceof AST_Assign && parent.left === node) {
+                sym.modified = true;
             }
             node.reference();
             return true;
@@ -314,9 +318,13 @@ AST_Function.DEFMETHOD("next_mangled", function(options, def){
     // a function expression's argument cannot shadow the function expression's name
 
     var tricky_def = def.orig[0] instanceof AST_SymbolFunarg && this.name && this.name.definition();
+
+    // the function's mangled_name is null when keep_fnames is true
+    var tricky_name = tricky_def ? tricky_def.mangled_name || tricky_def.name : null;
+
     while (true) {
         var name = AST_Lambda.prototype.next_mangled.call(this, options, def);
-        if (!(tricky_def && tricky_def.mangled_name == name))
+        if (!tricky_name || tricky_name != name)
             return name;
     }
 });
@@ -377,7 +385,7 @@ AST_Toplevel.DEFMETHOD("_default_mangler_options", function(options){
         eval        : false,
         sort        : false, // Ignored. Flag retained for backwards compatibility.
         toplevel    : false,
-        screw_ie8   : false,
+        screw_ie8   : true,
         keep_fnames : false
     });
 });

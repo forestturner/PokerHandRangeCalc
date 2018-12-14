@@ -5,7 +5,7 @@ ul {
     overflow: hidden;
     background-color: #333;
 }
-.stats{
+.stats {
   list-style: :none;
   width: 200px;
   background: oldlace;
@@ -40,18 +40,20 @@ li a:hover:not(.active) {
 .container {
   margin: 20px 100px;
 }
+
+@media only screen and (max-width: 1000px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .slider{
 
 
 
   width:400px;
 }
-/*test*/
-/*#main {
-  width: 600px;
-  margin: 0 auto;
-  text-align: center;
-}*/
 
 body {
   background: oldlace;
@@ -102,31 +104,18 @@ p {
 
 .tile {
   /* background: #d9e0d6; */
-background-color: #d9e0d6;
-border: 1px solid #464646;
-height: 25px;
-padding: 2px;
-text-align: center;
-width: 25px;
-font-weight: normal;
-font-size: 0.75em;
-font-family: Arial, Helvetica, sans-serif;
-float: left;
-margin: 2px;
-cursor: crosshair;
-/* font-weight: bold; */
-  /*height: 25px;
-  width: 25px;
-  background: lightgray;
+  background-color: #d9e0d6;
+  border: 1px solid #464646;
+  height: 30px;
+  padding: 3px;
+  text-align: center;
+  width: 30px;
+  font-weight: normal;
+  font-size: 0.90em;
+  font-family: Arial, Helvetica, sans-serif;
   float: left;
-  border-style: outset;
-  border-width: 2px;
-  line-height: 20px;
-  padding-left: 3px;
-  font-size: 14px;
-  font-weight: bold;
-  position: relative;
-  text-align: center;*/
+  margin: 3px;
+  cursor: pointer;
 }
 .red {
   color:red;
@@ -135,16 +124,10 @@ cursor: crosshair;
   color:black;
 }
 
-/*.progress {
-  height:15px;
-  margin:10px;
-  padding:5px;
-}*/
 .progress-bar {
   height:15px;
   margin:10px;
   padding:5px;
-  /*background-color: #4CAF50;*/
 }
 .explored {
   border-style: inset;
@@ -178,6 +161,7 @@ cursor: crosshair;
 .reset {
   margin: 10px;
   margin-left: 35px;
+  padding: 5px;
 }
 
 /*graph*/
