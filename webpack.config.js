@@ -1,29 +1,40 @@
+const path = require('path');
+
 module.exports = {
-  entry: "./frontend/entry.jsx",
+  mode: 'production',
+  entry: path.resolve(__dirname, 'frontend/entry.jsx'),
   output: {
-        path: "./",
-    filename: "bundle.js"
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: [/\.jsx?$/, /\.js?$/],
-        exclude: /(node_modules)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react']
-        }
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.less$/,
-        loader: "style!css!less?strictMath&noIeCompat"
-      }
-    ]
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: { strictMath: true, noIeCompat: true },
+          },
+        ],
+      },
+    ],
   },
-
-
-  devtool: 'source-map',
   resolve: {
-    extensions: ["", ".js", ".jsx" ]
-  }
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
+  devtool: 'source-map',
 };
